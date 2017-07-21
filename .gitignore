@@ -1,0 +1,15 @@
+ts-node-*
+node_modules
+.vscode
+.DS_Store
+*.bundle.js
+*.out
+.settings
+typings
+dist
+*.log
+*.map
+.sass-cache
+package-lock.json
+build
+dist

@@ -1,0 +1,28 @@
+{
+  "name": "duo-node-server",
+  "version": "1.0.0",
+  "description": "Node server architecture",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "start": "rm -rf dist/* && tsc && node ./dist/index.js",
+    "dev": "./node_modules/.bin/nodemon --exec ./node_modules/.bin/ts-node -- ./index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MichaelDuo/duo-node-server.git"
+  },
+  "author": "Michael Dong",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MichaelDuo/duo-node-server/issues"
+  },
+  "homepage": "https://github.com/MichaelDuo/duo-node-server#readme",
+  "devDependencies": {
+    "@types/node": "^8.0.14",
+    "nodemon": "^1.11.0",
+    "ts-node": "^3.2.1",
+    "typescript": "^2.4.2"
+  }
+}
