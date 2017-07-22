@@ -1,3 +1,4 @@
+import initKoa from './init-koa'
 export default async function(){
-    console.log("Initializing5")
+    await initKoa()
 }
