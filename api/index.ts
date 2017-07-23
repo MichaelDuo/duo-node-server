@@ -1,9 +1,9 @@
 import * as Router from 'koa-router'
 import http from './http'
-import foo from './foo/foo.controller'
+import user from './user/user.controller'
 
 const router = new Router()
 
-router.get('/', http(foo.test))
+router.get('/', http(user.test))
 
 export default router

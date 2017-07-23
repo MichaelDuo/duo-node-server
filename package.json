@@ -30,6 +30,7 @@
     "typescript": "^2.4.2"
   },
   "dependencies": {
+    "@types/mongoose": "^4.7.19",
     "koa": "^2.3.0",
     "koa-bodyparser": "^4.2.0",
     "koa-cors": "0.0.16",
@@ -37,6 +38,6 @@
     "koa-router": "^7.2.1",
     "lodash": "^4.17.4",
     "mongodb": "^2.2.30",
-    "mongoose": "^4.11.3"
+    "mongoose": "^4.10.8"
   }
 }
