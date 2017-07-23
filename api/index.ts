@@ -1,6 +1,6 @@
 import * as Router from 'koa-router'
 import http from './http'
-import foo from './foo'
+import foo from './foo/foo.controller'
 
 const router = new Router()
 

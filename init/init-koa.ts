@@ -8,6 +8,10 @@ export default async function initKoa(){
     .use(bodyParser())
     .use(api.routes())
     .use(api.allowedMethods())
+    .on('err', (err, ctx)=>{
+        console.log(err)
+        ctx.body = err.message
+    })
 
     return await new Promise((resolve, reject)=>{
         http.createServer(app.callback())
