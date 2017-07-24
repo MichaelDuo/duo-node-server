@@ -18,5 +18,5 @@ export default async function initKoa(){
         .listen(3000, ()=>{
             resolve()
         })
-    }) 
+    })
 }

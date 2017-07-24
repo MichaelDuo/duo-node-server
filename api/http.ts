@@ -1,5 +1,5 @@
 import * as _ from 'lodash'
-import {Context} from 'koa'
+import { Context } from 'koa'
 
 export default function http(apiMethod:Function, config?:any){
     return async function apiHandler(ctx:Context, next:Function){

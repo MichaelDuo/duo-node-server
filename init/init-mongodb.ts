@@ -1,5 +1,8 @@
 import * as mongoose from 'mongoose'
 import Config from '../config'
+import '../datastore'
+
+(<any>mongoose).Promise = Promise;
 
 export default async function initMongoDB(){
     const mongodbURI = Config.db.uri
