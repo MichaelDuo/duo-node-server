@@ -1,6 +1,22 @@
+/**
+ * Example Usage:
+ * let scheduler = new Scheduler()
+ * let job = scheduler.schedule(()=>console.log("Scheduled Every 5sec"), 5000)
+ *  .onError(()=>{
+ *      job.stop()
+ *  })
+ */
 export default class Scheduler {
-    public static schedule(task:Function, interval:number){
-        return new Job(task, interval)
+    jobs:Job[] = []
+
+    public stopAll(){
+        this.jobs.forEach((job:Job)=>job.stop())
+    }
+
+    public schedule(task:Function, interval:number){
+        let j = new Job(task, interval)
+        this.jobs.push(j)
+        return j
     }
 }
 
