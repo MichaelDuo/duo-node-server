@@ -1,4 +1,4 @@
-import * as userService from './users.service'
+import * as userService from './user.service'
 import * as _ from 'lodash'
 
 export default class User {
@@ -16,9 +16,9 @@ export default class User {
 
     static async add(options:any, body:any){
         let user = await userService.createUser({
-            phone: body.phone,
+            username: body.username,
             name: body.name,
-            pwd: body.pwd,
+            pwd: body.pwd
         })
         return "User Added"
     }

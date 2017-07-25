@@ -1,9 +1,9 @@
 import * as mongoose from 'mongoose'
 
 export interface IUser {
-    name  : string
-    phone : string
-    pwd   : string
+    username : string
+    name     : string
+    pwd      : string
 }
 
 export interface IUserDocument extends IUser, mongoose.Document {
@@ -15,9 +15,9 @@ export interface IUserModel extends mongoose.Model<IUserDocument> {
 }
 
 const UserSchema = new mongoose.Schema({
+    username  : {type: String, required: true, unique: true},
+    pwd       : {type: String, required: true},
     name      : {type: String},
-    phone     : {type: String},
-    pwd       : {type: String},
     createdOn : {type: Date, default: Date.now}
 })
 
