@@ -6,6 +6,6 @@ export async function gerVerifiedUser(user: {username: string, pwd: string}):Pro
     return await dataStore.User.findOne(user)
 }
 
-export async function getToken(loginData: { username: string, pwd: string }):Promise<string> {
-    return jwt.sign({ uid: "uId" }, Config.tokenSecret)
+export async function getToken(loginData: { username: string }):Promise<string> {
+    return jwt.sign(loginData, Config.tokenSecret)
 }

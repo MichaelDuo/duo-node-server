@@ -9,9 +9,9 @@ export interface ErrorOption {
 export enum ErrorLevel { L, M, H }
 
 export const code = {
-    OK:                       [200, 200, 'OK'],
-    INTERNAL_SERVER_ERROR:    [500, 500, 'Internal server error.'],
-    NOT_FOUND:                [404, 404, 'Not Found.']
+    OK:                       [200, 200, 'OK', ErrorLevel.L],
+    NOT_FOUND:                [404, 404, 'Not Found.', ErrorLevel.L],
+    INTERNAL_SERVER_ERROR:    [500, 500, 'Internal server error.', ErrorLevel.H],
 }
 
 export default class ServerError extends Error {
@@ -27,18 +27,18 @@ export default class ServerError extends Error {
             this.statusCode = options[0]
             this.errorCode  = options[1]
             this.message    = options[2]
-            if ( this.errorCode < 400 ) 
-                this.level  = ErrorLevel.L
+            if(options[3]) 
+                this.level  = options[3]
             else if ( this.errorCode < 500 ) 
-                this.level  = ErrorLevel.M
+                this.level  = ErrorLevel.L
             else
                 this.level  = ErrorLevel.H
         } else {
             this.statusCode = options.statusCode || this.statusCode
-            this.errorCode  = options.errorCode || this.errorCode
-            this.level      = options.level || this.level
+            this.errorCode  = options.errorCode  || this.errorCode
+            this.level      = options.level      || this.level
             this.error      = options.error
-            this.message    = options.message || (this.error ? this.error.message : null) || this.message
+            this.message    = options.message    || (this.error ? this.error.message : null) || this.message
         }
     }
 }

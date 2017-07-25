@@ -1,10 +1,12 @@
 import * as http from 'http'
 import * as Koa from 'koa'
 import * as bodyParser from 'koa-bodyparser'
+import errorHandler from '../middleware/error-handler'
 import api from '../api'
 
 export default async function initKoa(){
     const app = new Koa()
+    .use(errorHandler)
     .use(bodyParser())
     .use(api.routes())
     .use(api.allowedMethods())
