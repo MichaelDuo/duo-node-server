@@ -39,7 +39,7 @@ export default class ServerError extends Error {
 
 export const code = {
     OK:                       [200, 200, 'OK', ErrorLevel.L],
-    UNAUTHORIZED:             [403, 403, 'Unauthorized.', ErrorLevel.L],
+    UNAUTHORIZED:             [401, 401, 'Unauthorized.', ErrorLevel.L],
     NOT_FOUND:                [404, 404, 'Not Found.', ErrorLevel.L],
     INTERNAL_SERVER_ERROR:    [500, 500, 'Internal server error.', ErrorLevel.H],
 }
