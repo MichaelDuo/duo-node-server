@@ -8,7 +8,7 @@ export default class Login {
         let verifiedUser = await loginService.gerVerifiedUser(user)
         let token
         if(verifiedUser){
-            token = await loginService.getToken({ username: body.username })
+            token = await loginService.getToken({ id: verifiedUser.id })
         } else {
             throw new ServerError(code.NOT_FOUND)
         }

@@ -1,17 +1,11 @@
+export enum ErrorLevel { L, M, H }
+
 export interface ErrorOption {
     statusCode? : number
     errorCode?  : number
     level?      : ErrorLevel
     message?    : string
     error?      : Error
-}
-
-export enum ErrorLevel { L, M, H }
-
-export const code = {
-    OK:                       [200, 200, 'OK', ErrorLevel.L],
-    NOT_FOUND:                [404, 404, 'Not Found.', ErrorLevel.L],
-    INTERNAL_SERVER_ERROR:    [500, 500, 'Internal server error.', ErrorLevel.H],
 }
 
 export default class ServerError extends Error {
@@ -41,4 +35,11 @@ export default class ServerError extends Error {
             this.message    = options.message    || (this.error ? this.error.message : null) || this.message
         }
     }
+}
+
+export const code = {
+    OK:                       [200, 200, 'OK', ErrorLevel.L],
+    UNAUTHORIZED:             [403, 403, 'Unauthorized.', ErrorLevel.L],
+    NOT_FOUND:                [404, 404, 'Not Found.', ErrorLevel.L],
+    INTERNAL_SERVER_ERROR:    [500, 500, 'Internal server error.', ErrorLevel.H],
 }

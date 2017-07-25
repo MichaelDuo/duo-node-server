@@ -6,9 +6,8 @@ import auth from '../middleware/auth'
 
 const router = new Router()
 
-router.post( '/users', http(users.add))
-router.get(  '/users', auth, http(users.browse))
-
-router.post( '/login', http(login.login))
+router.post('/users', http(users.add))
+router.get( '/users', auth, http(users.browse))
+router.post('/login', http(login.login))
 
 export default router
