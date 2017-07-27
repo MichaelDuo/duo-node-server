@@ -1,3 +1,4 @@
+// TODO: Should read from environment variable
 import mongodbConfig from './mongodb-config'
 export default class Config {
     public static db = mongodbConfig
