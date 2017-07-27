@@ -1,2 +1,15 @@
 # duo-node-server
-Basic node server architecture
+
+A node server boilerplate
+
+## Tech Stacks
+- typescript
+- koa
+
+## Getting Started
+
+`npm install`
+
+For development
+
+`npm run dev`
