@@ -1,4 +1,3 @@
-import * as loginService from './login.service'
 import ServerError, { code } from '../../lib/server-error'
 import { Context } from 'koa'
 const passport = require('koa-passport')

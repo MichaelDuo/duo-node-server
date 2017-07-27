@@ -1,3 +1,8 @@
+/**
+ * Low Level Error:    Caused by user.
+ * Medium Level Error: Caused by user or server, but can be expected or not critical.
+ * High Level Error:   Caused by server, unexpected error or critical error.
+ */
 export enum ErrorLevel { L, M, H }
 
 export interface ErrorOption {
@@ -14,13 +19,19 @@ export default class ServerError extends Error {
     level              = ErrorLevel.L
     message            = ""
     error?:Error       
-    
-    constructor(options:ErrorOption | Array<any>){
+    /**
+     * 
+     * @param options 
+     * @param message 
+     * Message For Overridding default message in code array
+     */
+    constructor(options:ErrorOption | Array<any>, message?:String){
         super()
+        this.name = "ServerError"
         if (options instanceof Array) {
             this.statusCode = options[0]
             this.errorCode  = options[1]
-            this.message    = options[2]
+            this.message    = message || options[2]
             if(options[3]) 
                 this.level  = options[3]
             else if ( this.errorCode < 500 ) 
@@ -39,6 +50,7 @@ export default class ServerError extends Error {
 
 export const code = {
     OK:                       [200, 200, 'OK', ErrorLevel.L],
+    BAD_REQUEST:              [400, 400, 'Bad Request.', ErrorLevel.L],
     UNAUTHORIZED:             [401, 401, 'Unauthorized.', ErrorLevel.L],
     NOT_FOUND:                [404, 404, 'Not Found.', ErrorLevel.L],
     INTERNAL_SERVER_ERROR:    [500, 500, 'Internal server error.', ErrorLevel.H],

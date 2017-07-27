@@ -5,17 +5,19 @@ export default async function errorHandler(ctx:Context, next:Function){
     try {
         await next()
     } catch (err) {
-        if(err instanceof ServerError){
-            handleServerError(err)
-            ctx.status = err.statusCode
-            ctx.body   = {
-                code:    err.errorCode,
-                message: err.message,
-            }
-        } else {
-            handleError(err)
-            ctx.status = 500
-            ctx.body   = "Internal Server Error."
+        switch(err.name){
+            case "ServerError":
+                handleServerError(err)
+                ctx.status = err.statusCode
+                ctx.body   = {
+                    code:    err.errorCode,
+                    message: err.message,
+                }
+                break;
+            default:
+                handleError(err)
+                ctx.status = 500
+                ctx.body   = "Internal Server Error."
         }
     }
 }
@@ -37,5 +39,6 @@ function handleServerError(error:ServerError){
 }
 
 function handleError(error:Error){
+    console.log("Unhandled Error.")
     console.log(error)
 }

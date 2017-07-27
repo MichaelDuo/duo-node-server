@@ -1,5 +1,7 @@
 import * as userService from './user.service'
 import * as _ from 'lodash'
+const validate = require( 'validate.js' )
+import ServerError, { code } from '../../lib/server-error'
 
 export default class User {
     static async browse(options:any, body:any):Promise<any>{
@@ -15,6 +17,14 @@ export default class User {
     }
 
     static async add(options:any, body:any){
+        let bodyConstraints = {
+            username: { presence: true, length: {minimum: 6} },
+            test: { presence: true },
+        }
+        let vErr = validate(body, bodyConstraints)
+        if(vErr){ 
+            throw new ServerError(code.BAD_REQUEST, vErr)
+         }
         let user = await userService.createUser({
             username: body.username,
             name: body.name,

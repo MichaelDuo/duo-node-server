@@ -14,6 +14,11 @@ export function init() {
 
 export const authLocal = makeAuthMiddlware('local')
 
+/**
+ * @param {Context} ctx 
+ * @param {Function} next 
+ * Verify jwt token and set ctx.state.user
+ */
 export async function requireLogin(ctx:Context, next:Function){
     try {
         ctx.state.user = jwt.verify(ctx.cookies.get("token"), Config.tokenSecret)

@@ -29,6 +29,7 @@
     "@types/node": "^8.0.14",
     "@types/passport": "^0.3.3",
     "@types/passport-strategy": "^0.2.30",
+    "@types/validate.js": "0.0.2",
     "nodemon": "^1.11.0",
     "ts-node": "^3.2.1",
     "typescript": "^2.4.2"
@@ -44,6 +45,7 @@
     "lodash": "^4.17.4",
     "mongodb": "^2.2.30",
     "mongoose": "^4.10.8",
-    "passport-strategy": "^1.0.0"
+    "passport-strategy": "^1.0.0",
+    "validate.js": "^0.11.1"
   }
 }
