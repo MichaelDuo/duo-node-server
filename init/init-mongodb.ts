@@ -5,7 +5,7 @@ import '../datastore'
 (<any>mongoose).Promise = Promise;
 
 export default async function initMongoDB(){
-    const mongodbURI = Config.db.uri
+    const mongodbURI = `${Config.db.uri}/${Config.db.database}`
     const options = {
         server: {
             auto_reconnect: true,
