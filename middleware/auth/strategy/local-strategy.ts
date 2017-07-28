@@ -24,7 +24,7 @@ export default class LocalStrategy extends Strategy {
             
         let { username, password } = req.body
         let user = await dataStore.User.findOne({username})
-        if(user && utils.hashString(password)===user.pwd){
+        if(user && utils.hashString(password)===user.password){
             this.success({ id: user.id }, {})
         } else {
             this.fail(new ServerError(code.UNAUTHORIZED), 401)

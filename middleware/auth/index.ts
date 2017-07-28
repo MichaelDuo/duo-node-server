@@ -50,7 +50,7 @@ function makeAuthMiddlware(name:string){
             ctx.state.token = jwt.sign(user, Config.tokenSecret)
             ctx.status = status || 200
             ctx.cookies.set("token", ctx.state.token)
-            next()
+            return next()
         })(ctx, next)
     }
 }

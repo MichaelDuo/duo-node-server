@@ -1,8 +1,8 @@
 import * as dataStore from '../../datastore'
 import * as utils from '../../lib/utils'
 
-export async function createUser(user: {username: string, name: string, pwd: string} ):Promise<dataStore.IUserDocument>{
-    user.pwd = utils.hashString(user.pwd)
+export async function createUser(user: {username: string, name: string, password: string} ):Promise<dataStore.IUserDocument>{
+    user.password = utils.hashString(user.password)
     return await dataStore.User.create(user)
 }
 

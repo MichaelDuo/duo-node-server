@@ -8,7 +8,7 @@ var connected = false
 
 export default async function initMongoDB(){
     if(connected) return
-    const mongodbURI = `${Config.db.uri}/${Config.db.database}`
+    const mongodbURI = `${Config.db.uri}/${Config.db.database}_test`
     const options = {
         server: {
             auto_reconnect: true,

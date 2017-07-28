@@ -19,7 +19,7 @@ export default class User {
     static async add(options:any, body:any){
         let bodyConstraints = {
             username: { presence: true, length: {minimum: 6} },
-            pwd: {presence: true},
+            password: {presence: true},
         }
         let vErr = validate(body, bodyConstraints)
         if(vErr) throw new ServerError(code.BAD_REQUEST, vErr)
@@ -27,7 +27,7 @@ export default class User {
         let user = await userService.createUser({
             username: body.username,
             name: body.name,
-            pwd: body.pwd,
+            password: body.password,
         })
 
         return "User Added"
