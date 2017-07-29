@@ -33,7 +33,7 @@ export default class User {
         return "User Added"
     }
 
-    static async destroy(options:any, body:any){
+    static async delete(options:any, body:any){
         return "Destroy user"
     }
 }
