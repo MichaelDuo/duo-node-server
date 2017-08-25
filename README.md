@@ -13,3 +13,9 @@ A node server boilerplate
 For development
 
 `npm run dev`
+
+## Files
+
+- controller should only contain high level commands
+- controller should NOT handle command call errors, leave it to the error handler, if possible
+- service should check the input and output and throw errors if necessary
